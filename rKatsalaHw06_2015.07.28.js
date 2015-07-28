@@ -14,28 +14,31 @@ var car = {
 
 Object.defineProperties(car, {
  setSpeed: {
-  set: function(value) {
+  value: function(value) {
    this.speedometer = value;
-   console.log(this.speedometer);
+   //console.log(this.speedometer);
    return this;
-  }
+  },
+  enumerable: true
  },
 
  getSpeed: {
-  get: function() {
+  value: function() {
    console.log(this.speedometer);
    return this;
-  }
+  },
+  enumerable: true
  },
 
  clearSpeed: {
-  set: function() {
+  value: function() {
    this.speedometer = 0;
-   console.log(this.speedometer)
+   //console.log(this.speedometer)
    return this;
-  }
+  },
+  enumerable: true
  }
 });
 
-//car.setSpeed(200).setSpeed(300).getSpeed().clearSpeed();
-car.setSpeed(200);
+car.setSpeed(200).setSpeed(300).getSpeed().clearSpeed();
+console.dir(car);
