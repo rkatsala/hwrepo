@@ -14,8 +14,24 @@ var car = {
 
 Object.defineProperties(car, {
 
+    MAX_VALUE: {
+        value: 320
+    },
+
     setSpeed: {
-        value: function(value) {
+        value: function (value) {
+            if (isNaN(value)) {
+                throw new Error("Значення не є числовим");
+            }
+
+            if (value < 0) {
+                throw new Error("Значення має бути додатнім");
+            }
+
+            if (value > this.MAX_VALUE) {
+                throw new Error("Значення не може бути більшим за " + this.MAX_VALUE);
+            }
+
             this.speedometer = value;
 
             return this;
@@ -25,8 +41,9 @@ Object.defineProperties(car, {
     },
 
     getSpeed: {
-        value: function() {
+        value: function () {
             console.log(this.speedometer);
+
             return this;
         },
 
@@ -34,8 +51,8 @@ Object.defineProperties(car, {
     },
 
     clearSpeed: {
-        value: function() {
-            this.speedometer = 0;
+        value: function () {
+            this.speedometer = null;
 
             return this;
         },
@@ -47,3 +64,8 @@ Object.defineProperties(car, {
 car.setSpeed(200).setSpeed(300).getSpeed().clearSpeed();
 
 console.dir(car);
+
+car.setSpeed(150).getSpeed();
+
+console.log(Object.keys(car));
+console.log(Object.getOwnPropertyNames(car));
