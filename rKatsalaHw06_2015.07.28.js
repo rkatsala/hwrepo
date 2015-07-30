@@ -9,36 +9,41 @@
  */
 
 var car = {
- speedometer: 0
+    speedometer: 0
 };
 
 Object.defineProperties(car, {
- setSpeed: {
-  value: function(value) {
-   this.speedometer = value;
-   //console.log(this.speedometer);
-   return this;
-  },
-  enumerable: true
- },
 
- getSpeed: {
-  value: function() {
-   console.log(this.speedometer);
-   return this;
-  },
-  enumerable: true
- },
+    setSpeed: {
+        value: function(value) {
+            this.speedometer = value;
 
- clearSpeed: {
-  value: function() {
-   this.speedometer = 0;
-   //console.log(this.speedometer)
-   return this;
-  },
-  enumerable: true
- }
+            return this;
+        },
+
+        enumerable: true
+    },
+
+    getSpeed: {
+        value: function() {
+            console.log(this.speedometer);
+            return this;
+        },
+
+        enumerable: true
+    },
+
+    clearSpeed: {
+        value: function() {
+            this.speedometer = 0;
+
+            return this;
+        },
+
+        enumerable: true
+    }
 });
 
 car.setSpeed(200).setSpeed(300).getSpeed().clearSpeed();
+
 console.dir(car);
