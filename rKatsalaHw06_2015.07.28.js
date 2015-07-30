@@ -15,6 +15,16 @@ var car = {
 Object.defineProperties(car, {
  setSpeed: {
   value: function(value) {
+   if (isNaN(value)) {
+    throw new Error("Введено недопустиме значення!");
+   }
+   if (value < 0) {
+    throw new Error("Введено від'ємне значення!");
+   }
+   if (value > 320) {
+    throw new Error("Введено занадто велике значення!");
+   }
+
    this.speedometer = value;
    //console.log(this.speedometer);
    return this;
@@ -32,7 +42,7 @@ Object.defineProperties(car, {
 
  clearSpeed: {
   value: function() {
-   this.speedometer = 0;
+   this.speedometer = null;
    //console.log(this.speedometer)
    return this;
   },
@@ -42,3 +52,5 @@ Object.defineProperties(car, {
 
 car.setSpeed(200).setSpeed(300).getSpeed().clearSpeed();
 console.dir(car);
+
+car.setSpeed(150).getSpeed();
