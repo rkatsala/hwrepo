@@ -14,6 +14,48 @@ var car = {
 
 Object.defineProperties(car, {
 
+    setSpeedometer: {
+        set: function (value) {
+            if (isNaN(value)) {
+                throw new Error("Введено недопустиме значення!");
+            }
+
+            if (value < 0) {
+                throw new Error("Введено від'ємне значення!");
+            }
+
+            if (value > this.MAX_VALUE) {
+                throw new Error("Введено занадто велике значення!");
+            }
+
+            this.speedometer = value;
+
+            return this;
+        },
+
+        enumerable: true
+    },
+
+    getSpeedometer: {
+        get: function () {
+            console.log(this.speedometer);
+
+            return this;
+        },
+
+        enumerable: true
+    },
+
+    clearSpeedometer: {
+        set: function () {
+            this.speedometer = null;
+
+            return this;
+        },
+
+        enumerable: true
+    },
+
     MAX_VALUE: {
         value: 320
     },
@@ -69,3 +111,8 @@ car.setSpeed(150).getSpeed();
 
 console.log(Object.keys(car));
 console.log(Object.getOwnPropertyNames(car));
+
+car.setSpeedometer = 300;
+car.getSpeedometer;
+car.clearSpeedometer = 123;
+car.getSpeedometer;
