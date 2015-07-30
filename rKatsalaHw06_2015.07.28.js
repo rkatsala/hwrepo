@@ -9,48 +9,63 @@
  */
 
 var car = {
- speedometer: 0
+    speedometer: 0
 };
 
 Object.defineProperties(car, {
- setSpeed: {
-  value: function(value) {
-   if (isNaN(value)) {
-    throw new Error("Введено недопустиме значення!");
-   }
-   if (value < 0) {
-    throw new Error("Введено від'ємне значення!");
-   }
-   if (value > 320) {
-    throw new Error("Введено занадто велике значення!");
-   }
 
-   this.speedometer = value;
-   //console.log(this.speedometer);
-   return this;
-  },
-  enumerable: true
- },
+    MAX_VALUE: {
+        value: 320
+    },
 
- getSpeed: {
-  value: function() {
-   console.log(this.speedometer);
-   return this;
-  },
-  enumerable: true
- },
+    setSpeed: {
+        value: function (value) {
+            if (isNaN(value)) {
+                throw new Error("Введено недопустиме значення!");
+            }
 
- clearSpeed: {
-  value: function() {
-   this.speedometer = null;
-   //console.log(this.speedometer)
-   return this;
-  },
-  enumerable: true
- }
+            if (value < 0) {
+                throw new Error("Введено від'ємне значення!");
+            }
+
+            if (value > this.MAX_VALUE) {
+                throw new Error("Введено занадто велике значення!");
+            }
+
+            this.speedometer = value;
+
+            return this;
+        },
+
+        enumerable: true
+    },
+
+    getSpeed: {
+        value: function () {
+            console.log(this.speedometer);
+
+            return this;
+        },
+
+        enumerable: true
+    },
+
+    clearSpeed: {
+        value: function () {
+            this.speedometer = null;
+
+            return this;
+        },
+
+        enumerable: true
+    }
 });
 
 car.setSpeed(200).setSpeed(300).getSpeed().clearSpeed();
+
 console.dir(car);
 
 car.setSpeed(150).getSpeed();
+
+console.log(Object.keys(car));
+console.log(Object.getOwnPropertyNames(car));
