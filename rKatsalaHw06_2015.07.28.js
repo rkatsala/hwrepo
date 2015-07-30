@@ -21,15 +21,15 @@ Object.defineProperties(car, {
     setSpeed: {
         value: function (value) {
             if (isNaN(value)) {
-                throw new Error("Введено недопустиме значення!");
+                throw new Error("Значення не є числовим");
             }
 
             if (value < 0) {
-                throw new Error("Введено від'ємне значення!");
+                throw new Error("Значення має бути додатнім");
             }
 
             if (value > this.MAX_VALUE) {
-                throw new Error("Введено занадто велике значення!");
+                throw new Error("Значення не може бути більшим за " + this.MAX_VALUE);
             }
 
             this.speedometer = value;
